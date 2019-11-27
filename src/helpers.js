@@ -14,7 +14,10 @@ export async function searchForGifs(searchTerm, offSet) {
 
 /* --- Cache implementation --- */
 
-// Going to make a basic least recently used cache (LRU) to store the api responses. A doublely linked list, with a hashmap is a good way to do this and be able to both read and write to/from the cache in linear time. The cache is also going to make requests when something that isn't already cached is asked for (and the response will get cached).
+/* Going to make a basic least recently used cache (LRU) to store the api responses. A doublely linked list 
+with a hashmap is a good way to do this and be able to both read and write to/from the cache in linear time.
+The cache is also going to make requests when something that isn't already cached is asked for 
+(and the response will get cached). */
 
 // response class, which will be the the "nodes" in our linked list
 class GifResponse {
