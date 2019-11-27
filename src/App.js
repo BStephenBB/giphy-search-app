@@ -51,7 +51,7 @@ function App() {
     <>
       <form className="searchForm" onSubmit={handleSubmit}>
         <div role="search" className="searchContainer">
-          <label className="title" htmlFor="gifSearch">
+          <label className="title" htmlFor="search">
             Search for a GIF!
           </label>
           <div className="searchFieldWrapper">
