@@ -1,13 +1,165 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+html {
+  height: 100%;
+}
+
+:root {
+  --white: #fff;
+  --primary: #0e76ff;
+  --secondary: #6dfacd;
+  --text: #282828;
+  --baseUnit: 8px;
+  --radius: 4px;
+  --shadowTransition: box-shadow 0.15s ease;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--primary);
+  color: var(--text);
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--baseUnit) * 8) calc(var(--baseUnit) * 2) 0;
+}
+
+figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.searchForm {
+  width: 75%;
+}
+
+.searchContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  font-size: 3.25rem;
+  font-weight: 700;
+  margin-bottom: calc(var(--baseUnit) * 4);
+  color: var(--white);
+}
+
+.searchFieldWrapper {
+  display: flex;
+}
+
+.searchBar {
+  height: calc(var(--baseUnit) * 6);
+  margin-right: calc(var(--baseUnit) * 2);
+  font-size: 1.2rem;
+  color: inherit;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0 calc(var(--baseUnit) * 2);
+  outline: none;
+  transition: var(--shadowTransition);
+  box-shadow: var(--shadow);
+  flex-grow: 1;
+}
+
+.searchBar:focus {
+  box-shadow: 0 0 0 2px #6dfacd;
+}
+
+.searchBar::placeholder {
+  opacity: 0.5;
+  color: inherit;
+}
+
+.searchButton {
+  height: calc(var(--baseUnit) * 6);
+  background: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--primary);
+  outline: none;
+  transition: var(--shadowTransition);
+  padding: 0 calc(var(--baseUnit) * 3);
+  box-shadow: var(--shadow);
+}
+
+.searchButton:hover,
+.searchButton:focus {
+  box-shadow: 0 0 0 2px var(--secondary);
+}
+
+.searchButton:active {
+  transform: scale(1.025);
+}
+
+.searchButton:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.imageGrid {
+  margin-top: calc(var(--baseUnit) * 4);
+  margin-bottom: calc(var(--baseUnit) * 2);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-auto-rows: 100px;
+  grid-gap: calc(var(--baseUnit) * 1);
+  grid-auto-flow: dense;
+  width: 75%;
+}
+
+.gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.pageControlsWrapper {
+  display: flex;
+}
+
+.pageControlsWrapper .searchButton:first-of-type {
+  margin-right: calc(var(--baseUnit) * 2);
+}
+
+/* single breakpoint with some minor tweaks to make site fully responsive on mobile */
+@media screen and (max-width: 600px) {
+  .searchForm,
+  .imageGrid {
+    width: 100%;
+  }
+
+  .searchFieldWrapper {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .searchBar {
+    margin: 0 0 calc(var(--baseUnit) * 1);
+  }
 }
