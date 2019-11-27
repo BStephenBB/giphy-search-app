@@ -1,8 +1,22 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Requirements
+
+Build a React app that...
+
+1. has a search input field and a 'Search' button.
+
+2. queries the giphy API 'search' endpoint (https://developers.giphy.com/docs/) using the term in the input field when the user clicks Search.
+
+3. displays the results from the search in a grid. You'll need to figure out which url from giphy can be used in your results - the API returns a lot of options and some are not useable as img src's.
+
+4. caches search results and re-uses them if the same query happens twice.
+
+5. has pagination controls for search results below the grid.
+
 ## Project Notes / Summary / Thoughts
 
-I decided to implement an in-memory least recently used cache to cache the responses. While a LFU cache might be good for users that keep coming back for their go-to cat gif, since this is just done in memory, the chances of that helping are low. The main reason I went with a LRU cache replacement policy is because the pagination buttons will likely cause users to go back and forth between results on each search, and we wouldn't want to clear page 1 of a new query when the user goes to page 2 etc. just because its the first time the user has searched a term. In practice, a persistent cache would probably be better for an app this; see things to add section.
+I decided to implement an in-memory least recently used cache to cache the responses. While a LFU cache might be good for users that keep coming back for their go-to cat gif, since this is just done in memory, the chances of that happening are low. The main reason I went with a LRU cache replacement policy is because the pagination buttons will likely cause users to go back and forth between results on each search, and we wouldn't want to clear page 1 of a new query when the user goes to page 2 etc. just because its the first time the user has searched a term. In practice, a persistent cache would probably be better for an app like this; see things to add section.
 
 The rest of the app is pretty standard React code. I didn't feel the need to componetize too much since given the scope of the project and did all the stlying with css; a CSS-in-JSS solution doesn't seem worth it for a project of this scale. The styles are pretty basic; I used a bit of flexbox to position things, css grid for the image grid, and a couple style adjustments with a media query to make the page responsive. I also used css custom properties for variables.
 
@@ -26,7 +40,9 @@ In the project directory, you can run:
 ### `npm run start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser. _Make sure you create and `.env.local` file in the root of your project with the giphy api key in it to run properly._ See `.env.config` for the exact formatting. Your env file should have `REACT_APP_GIPHY_KEY=api_key_here` in it. CRA also supports adding in api keys in the CLI, ie:
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+**Make sure you create an `.env.local` file in the root of your project with the giphy api key in it to run properly.** See `.env.config` for the exact formatting. Your env file should have `REACT_APP_GIPHY_KEY=api_key_here` in it. CRA also supports adding in api keys in the CLI, if desired.
 
 The page will reload if you make edits.<br />
 
